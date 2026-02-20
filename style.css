@@ -1,0 +1,37 @@
+.result-box {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.grade {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.grade-value {
+    font-size: 45px;
+    padding: 8px 20px;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+/* Grade Colors */
+.grade-A { background-color: #2ecc71; }
+.grade-B { background-color: #3498db; }
+.grade-C { background-color: #f39c12; }
+.grade-D { background-color: #e74c3c; }
+
+.score {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}

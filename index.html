@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: linear-gradient(-45deg, #2f3d7c, #a57dcd, #76a9cb, #4e4376);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 45px;
+            width: 95%;
+            max-width: 950px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            color: white;
+        }
+
+        h1 { text-align: center; margin-bottom: 35px; }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 25px;
+        }
+
+        input, select {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 14px;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .full-width {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 14px 30px;
+            background: linear-gradient(45deg, #00f2ff, #4facfe);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 18px;
+            background: linear-gradient(45deg, #00f2ff, #4facfe);
+            text-align: center;
+            font-size: 19px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .grade {
+            font-size: 26px;
+            margin-top: 15px;
+        }
+
+        .grade-value {
+            font-size: 48px;
+            padding: 10px 25px;
+            border-radius: 12px;
+            margin-left: 10px;
+            color: white;
+        }
+
+        .grade-A { background-color: #2ecc71; }
+        .grade-B { background-color: #3498db; }
+        .grade-C { background-color: #f39c12; }
+        .grade-D { background-color: #e74c3c; }
+
+        .score {
+            font-size: 24px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            form { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎓 Student Performance Prediction</h1>
+
+    <form action="/predict" method="post">
+
+        <input type="number" name="age" value="{{ form_data.age if form_data else '' }}" placeholder="Age" required>
+
+        <select name="gender">
+            <option value="">Select Gender</option>
+            <option value="male" {% if form_data and form_data.gender=='male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if form_data and form_data.gender=='female' %}selected{% endif %}>Female</option>
+            <option value="other" {% if form_data and form_data.gender=='other' %}selected{% endif %}>Other</option>
+        </select>
+
+        <select name="school_type">
+            <option value="">School Type</option>
+            <option value="public" {% if form_data and form_data.school_type=='public' %}selected{% endif %}>Public</option>
+            <option value="private" {% if form_data and form_data.school_type=='private' %}selected{% endif %}>Private</option>
+        </select>
+
+        <select name="parent_education">
+            <option value="">Parent Education</option>
+            <option value="high school" {% if form_data and form_data.parent_education=='high school' %}selected{% endif %}>High School</option>
+            <option value="graduate" {% if form_data and form_data.parent_education=='graduate' %}selected{% endif %}>Graduate</option>
+            <option value="post graduate" {% if form_data and form_data.parent_education=='post graduate' %}selected{% endif %}>Post Graduate</option>
+        </select>
+
+        <input type="number" name="study_hours" value="{{ form_data.study_hours if form_data else '' }}" placeholder="Study Hours" required>
+
+        <input type="number" name="attendance_percentage" value="{{ form_data.attendance_percentage if form_data else '' }}" placeholder="Attendance %" required>
+
+        <select name="internet_access">
+            <option value="">Internet Access</option>
+            <option value="yes" {% if form_data and form_data.internet_access=='yes' %}selected{% endif %}>Yes</option>
+            <option value="no" {% if form_data and form_data.internet_access=='no' %}selected{% endif %}>No</option>
+        </select>
+
+        <select name="travel_time">
+            <option value="">Travel Time</option>
+            <option value="<15 min" {% if form_data and form_data.travel_time=='<15 min' %}selected{% endif %}><15 min</option>
+            <option value="15-30 min" {% if form_data and form_data.travel_time=='15-30 min' %}selected{% endif %}>15-30 min</option>
+            <option value="30-60 min" {% if form_data and form_data.travel_time=='30-60 min' %}selected{% endif %}>30-60 min</option>
+            <option value=">60 min" {% if form_data and form_data.travel_time=='>60 min' %}selected{% endif %}>>60 min</option>
+        </select>
+
+        <select name="extra_activities">
+            <option value="">Extra Activities</option>
+            <option value="yes" {% if form_data and form_data.extra_activities=='yes' %}selected{% endif %}>Yes</option>
+            <option value="no" {% if form_data and form_data.extra_activities=='no' %}selected{% endif %}>No</option>
+        </select>
+
+        <select name="study_method">
+            <option value="">Study Method</option>
+            <option value="notes" {% if form_data and form_data.study_method=='notes' %}selected{% endif %}>Notes</option>
+            <option value="textbook" {% if form_data and form_data.study_method=='textbook' %}selected{% endif %}>Textbook</option>
+            <option value="group study" {% if form_data and form_data.study_method=='group study' %}selected{% endif %}>Group Study</option>
+        </select>
+
+        <input type="number" name="math_score" value="{{ form_data.math_score if form_data else '' }}" placeholder="Math Score" required>
+
+        <input type="number" name="science_score" value="{{ form_data.science_score if form_data else '' }}" placeholder="Science Score" required>
+
+        <input type="number" name="english_score" value="{{ form_data.english_score if form_data else '' }}" placeholder="English Score" required>
+
+        <div class="full-width">
+            <button type="submit">Predict Performance</button>
+        </div>
+
+    </form>
+
+    {% if prediction_text %}
+    <div class="result-box">
+
+        <h2>🎯 Predicted Result</h2>
+
+        {% set clean_text = prediction_text.replace("🎯 Predicted Final Score:", "").strip() %}
+
+        {% if "Grade" in clean_text %}
+            {% set grade_letter = clean_text.replace("Grade", "").strip() | upper %}
+            <p class="grade">
+                Grade:
+                <span class="grade-value grade-{{ grade_letter }}">
+                    {{ grade_letter }}
+                </span>
+            </p>
+        {% else %}
+            <p class="score">{{ clean_text }}</p>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
