@@ -182,3 +182,7 @@ http://127.0.0.1:5000/
 - Flask backend integration
 - Frontend & Backend integration
 - Git & GitHub project management
+
+## 📌 About
+
+Student Performance Prediction System using Machine Learning & Flask Deployment.
