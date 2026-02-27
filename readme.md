@@ -1,229 +1,188 @@
-🎓 STUDENT PERFORMANCE PREDICTION USING MACHINE LEARNING
+# 🎓 Student Performance Prediction Using Machine Learning
 
-End-to-end Machine Learning project to predict student academic performance (Grade) using demographic, academic, and lifestyle factors.
-Includes EDA, preprocessing, model training, evaluation, and deployment using Flask.
+An end-to-end Machine Learning project to predict student academic performance (Grade) using demographic, academic, and lifestyle factors.
 
-The objective is to build a reliable prediction model by performing data analysis, preprocessing, model training, evaluation, and finally deploying it as an interactive web application.
+This project includes:
+- Exploratory Data Analysis (EDA)
+- Data preprocessing
+- Model training & evaluation
+- Deployment using Flask
 
-📌 PROBLEM STATEMENT
+---
 
-Student academic performance depends on multiple factors such as study habits, attendance, parental education, and lifestyle.
+## 📌 Problem Statement
+
+Student academic performance depends on multiple factors such as:
+- Study habits
+- Attendance
+- Parental education
+- Lifestyle
 
 Early prediction of academic performance helps:
-
-Identify at-risk students
-
-Provide academic support
-
-Improve overall institutional outcomes
+- Identify at-risk students
+- Provide academic support
+- Improve institutional outcomes
 
 This project applies Machine Learning to predict student grades based on various input features.
 
-📊 DATASET
-🔹 Input Features
+---
 
-Age
+## 📊 Dataset
 
-Gender
+### 🔹 Input Features
+- Age
+- Gender
+- School Type
+- Parent Education
+- Study Hours
+- Attendance Percentage
+- Internet Access
+- Travel Time
+- Extra Activities
+- Study Method
+- Math Score
+- Science Score
+- English Score
 
-School Type
-
-Parent Education
-
-Study Hours
-
-Attendance Percentage
-
-Internet Access
-
-Travel Time
-
-Extra Activities
-
-Study Method
-
-Math Score
-
-Science Score
-
-English Score
-
-🎯 Target Variable
-
+### 🎯 Target Variable
 Final Grade:
+- Grade A
+- Grade B
+- Grade C
+- Grade D
 
-Grade A
+---
 
-Grade B
+## 🔍 Exploratory Data Analysis (EDA)
 
-Grade C
-
-Grade D
-
-🔍 EXPLORATORY DATA ANALYSIS (EDA)
-
-Distribution analysis of numerical features
-
-Study hours vs performance comparison
-
-Attendance impact analysis
-
-Correlation heatmap
-
-Subject score relationship analysis
-
-Feature importance understanding
+- Distribution analysis of numerical features  
+- Study hours vs performance comparison  
+- Attendance impact analysis  
+- Correlation heatmap  
+- Subject score relationship analysis  
+- Feature importance understanding  
 
 EDA helped identify key academic patterns affecting student performance.
 
-🧠 MODEL USED
+---
 
-✔ Random Forest Regressor / Classifier
+## 🧠 Model Used
 
-Why Random Forest?
+**Random Forest Regressor / Classifier**
 
-Handles non-linear relationships
+### Why Random Forest?
+- Handles non-linear relationships  
+- Performs well on tabular data  
+- Reduces overfitting  
+- High stability and accuracy  
+- Works well with mixed data types  
 
-Performs well on tabular structured data
+Selected as the final model due to strong predictive performance.
 
-Reduces overfitting
+---
 
-High stability and accuracy
+## 🏗 Machine Learning Pipeline
 
-Works well with mixed numerical & categorical features
+- Data Cleaning  
+- Handling missing values  
+- Categorical feature encoding  
+- Train-Test Split  
+- Model Training  
+- Model Evaluation  
+- Model Saving (pickle)  
+- Flask Deployment Integration  
 
-Selected as final model due to strong predictive performance.
+---
 
-🏗 MACHINE LEARNING PIPELINE
+## 🧪 Evaluation Metrics
 
-Data Cleaning
-
-Handling missing values
-
-Categorical feature encoding
-
-Train-Test Split
-
-Model Training
-
-Model Evaluation
-
-Model Saving (pickle)
-
-Flask Deployment Integration
-
-🧪 EVALUATION METRICS
-
-Accuracy (for classification)
-
-Mean Squared Error (if regression used)
-
-R² Score
-
-Confusion Matrix
-
-Feature Importance
+- Accuracy (for classification)  
+- Mean Squared Error (for regression)  
+- R² Score  
+- Confusion Matrix  
+- Feature Importance  
 
 Model performance was evaluated to ensure reliability before deployment.
 
-🏆 FINAL MODEL
+---
 
-Random Forest Model
+## 🏆 Final Model
 
-Reason
+**Random Forest Model**
 
-Strong predictive performance
+### Reason
+- Strong predictive performance  
+- Robust with real-world data  
+- Handles feature interactions efficiently  
+- Provides stable predictions  
 
-Robust with real-world academic data
+---
 
-Handles feature interactions efficiently
+## 💻 Web Application
 
-Stable predictions
+Built using Flask.
 
-💻 WEB APPLICATION
+### Features
+- Modern glassmorphism UI  
+- Responsive design  
+- Form-based student input  
+- Color-coded grade output  
+- Real-time prediction  
+- Clean result display  
 
-Built using Flask
+### Prediction Output
+- Predicted Final Grade: **A / B / C / D**  
+- Styled grade box with color indication  
 
-Features
+---
 
-Modern glassmorphism UI
+## 🛠 Tech Stack
 
-Responsive design
+- Python  
+- Pandas  
+- NumPy  
+- Scikit-learn  
+- Matplotlib  
+- Seaborn  
+- Flask  
+- HTML & CSS  
+- Git & GitHub  
 
-Form-based student input
+---
 
-Color-coded grade output
+## ▶️ Run Locally
 
-Real-time prediction
-
-Clean result display
-
-Prediction Output
-
-🎯 Predicted Final Grade: A / B / C / D
-
-Styled grade box with color indication
-
-🛠 TECH STACK
-
-Python
-
-Pandas
-
-NumPy
-
-Scikit-learn
-
-Matplotlib
-
-Seaborn
-
-Flask
-
-HTML & CSS
-
-Git & GitHub
-
-
-▶️ RUN LOCALLY
+```bash
 pip install -r requirements.txt
 python app.py
+```
 
-
-Open in browser:
-
+## Open in browser
+```bash
 http://127.0.0.1:5000/
+```
 
-🚀 FUTURE WORK
 
-Add multiple ML models comparison
+## 🚀 Future Work
+- Add multiple ML model comparisons
+- Hyperparameter tuning
+- Deploy on Render / Railway
+- Add performance visualization dashboard
+- Add downloadable report
+- Add database integration
 
-Hyperparameter tuning
 
-Deploy on Render / Railway
 
-Add performance visualization dashboard
+## 🎓 Learning Outcomes
 
-Add downloadable report
+- Data preprocessing & feature engineering
+- Supervised Machine Learning modeling
+- Model evaluation techniques
+- ML model deployment
+- Flask backend integration
+- Frontend & Backend integration
+- Git & GitHub project management
 
-Add database integration
-
-🎓 LEARNING OUTCOMES
-
-Data preprocessing & feature engineering
-
-Supervised ML modeling
-
-Model evaluation techniques
-
-ML model deployment
-
-Flask backend integration
-
-Frontend & Backend integration
-
-Git & GitHub project management
-
-📌 About
+## 📌 About
 
 Student Performance Prediction System using Machine Learning & Flask Deployment.
